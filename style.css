@@ -19,6 +19,15 @@ body {
     position: relative;
 }
 
+.link {
+    text-decoration: none;
+    color: #d1d1d1;
+    transition: color 180ms ease;
+}
+
+.link:hover {
+    color: #cfe0ff;
+}
 /* Blob background effect */
 .blob {
     position: absolute;
