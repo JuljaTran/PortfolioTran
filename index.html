@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - Julia Tran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#home">Julia TKT</a>
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-inner container">
+                <h1 class="title" data-text="PORTFOLIO">TRAN</h1>
+                <h2 class="name">Julia Thien Kim</h2>
+                <h3 class="subtitle">Portfolio</h3>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill">HTML/CSS</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">React</div>
+                    <div class="skill">Adobe CC</div>
+                    <div class="skill">Figma</div>
+                    <div class="skill">Blender</div>
+                    <div class="skill">CMS</div>
+                    <div class="skill">Social media management</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="soft-skills" class="section skills">
+            <div class="container">
+                <h2 class="section-title">Soft Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill">Teamwork</div>
+                    <div class="skill">Kommunikation</div>
+                    <div class="skill">Problemlösung</div>
+                    <div class="skill">Anpassungsfähigkeit</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about gradient-about">
+            <div class="container about-grid">
+                <div class="about-left">
+                    <h2 class="section-title">Über mich</h2>
+                    <h3 class="about-subtitle">Hey, ich bin Julia.</h3>
+                    <p class="about-text">
+                        Ich bin Studentin im 3. Jahr des Bachelors in Medientechnik und -design mit großem Interesse an Web und digitalen Medien. 
+                        Ich setze Projekte gern praktisch um, erweitere stetig meine Fähigkeiten und gestalte Inhalte, die funktional und ansprechend sind. 
+                        Mein Ziel ist es, in der Webbranche kreative und wirkungsvolle Lösungen zu entwickeln.</p><br>
+                    <button class="download-cv-btn" onclick="window.location.href='./CV/CV_Tran_Download.pdf'">Download CV</button> 
+                </div>
+                <div class="about-right">
+                    <img src="./Img/Homepage/JTKT_smile_0c.jpg" alt="Julia smiling portrait" class="about-photo">
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title">Projekte</h2>
+                <div class="projects-grid">
+                    <a href="Projects/UX.html">                    
+                    <article class="project-card">
+                        <h3 class="project-title">UI/UX Design</h3>
+                        <p class="project-desc">Konzeptentwicklung einer App</p>
+                        <img src="./Img/Aqualoop/MockupHome2.png" alt="Aqualoop Logo" class="project-image">
+                    </article>
+                    </a>
+                    <a href="Projects/Graphic.html">
+                    <article class="project-card">
+                        <h3 class="project-title">Grafikdesign</h3>
+                        <p class="project-desc">Sammlung meiner Grafikdesign-Projekte</p>
+                        <img src="./Img/Graphics/3FaceManFinal.png" alt="Grafikdesign" class="project-image">                        
+                    </article>
+                    </a>
+                    <a href="Projects/3D.html">
+                    <article class="project-card">
+                        <h3 class="project-title">3D Galerie</h3>
+                        <p class="project-desc">Alle Modelle</p>
+                        <img src="./Img/3D/CozyPlaceL.jpg" alt="3D Galerie" class="project-image">
+                    </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Kontakt</h2>
+                <p>Kontaktieren Sie mich gerne per E-Mail oder über LinkedIn. Ich freue mich auf Ihre Nachricht!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2025 Julia Thien Kim Tran</p>
+            <p>tranjulia.tk@gmail.com</p>
+            <nav class="footer-nav">
+                <a href="https://www.linkedin.com/in/julia-tran-89800236b/">LinkedIn</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

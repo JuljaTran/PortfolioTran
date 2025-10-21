@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - Julia Tran</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        .pdf-viewer { background: #0b0b0b; padding: 40px 0; }
+        #pdf-container { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+        .pdf-set { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; }
+        .pdf-set h3 { margin: 0 0 14px; font-weight: 700; color: #fff; font-size: 1.1rem; }
+        .pdf-pages { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+        canvas.pdf-page-canvas { background: #fff; max-width: 100%; height: auto !important; box-shadow: 0 8px 24px rgba(0,0,0,0.25); border-radius: 6px; }
+        .pdf-loading { text-align: center; padding: 40px 20px; color: #cfcfcf; }
+        @media (max-width: 700px) { .pdf-set { padding: 12px; } }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="/index.html">Julia TKT</a>
+            </div>
+        </div>
+    </header>
+
+   <main>
+        <section id="home" class="hero hero--full">
+            <div class="hero-inner container">
+                <img src="../Img/Graphics/HeroImgDesign.png" alt="Hintergrundbild" class="hero-image">
+            </div>
+        </section>
+        
+        <section id="description" class="section">
+            <div class="container">
+                <h2 class="section-title">Grafikdesign</h2>
+                <p class="about-text">Sieh dir all meine kreativen Arbeiten im Bereich Grafikdesign an. Hier ist eine Zusammenstellung meiner Arbeiten, die ich im Laufe der Jahre erstellt habe.</p>
+                <p class="about-text">Verwendete Programme: Adobe Photoshop, Illustrator, InDesign</p>
+            </div>
+        </section>
+
+        <section class="section pdf-viewer">
+            <div class="container">
+                <div id="pdf-container">
+                    <div class="pdf-loading">PDF wird geladen...</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2025 Julia Thien Kim Tran</p>
+            <nav class="footer-nav">
+                <a href="https://www.linkedin.com/in/julia-tran-89800236b/">LinkedIn</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // PDF.js Setup
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Liste deiner PDFs: label + pfad
+        const pdfList = [
+            { label: 'Portfolio (2024)', path: '../Img/Graphics/2024_Tran.pdf' },
+            { label: 'Portfolio (2023)', path: '../Img/Graphics/2023_Tran.pdf' },
+        ];
+
+        const container = document.getElementById('pdf-container');
+
+        // Hilfsfunktion: Eine einzelne PDF-Datei rendern
+        async function renderPdfSet({ label, path }) {
+            const wrapper = document.createElement('section');
+            wrapper.className = 'pdf-set';
+
+            const heading = document.createElement('h3');
+            heading.textContent = label;
+            wrapper.appendChild(heading);
+
+            const pages = document.createElement('div');
+            pages.className = 'pdf-pages';
+            wrapper.appendChild(pages);
+
+            container.appendChild(wrapper);
+
+            try {
+                const pdf = await pdfjsLib.getDocument(path).promise;
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const scale = 1.3; // leicht kleiner für mehrere PDFs
+                    const viewport = page.getViewport({ scale });
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'pdf-page-canvas';
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    await page.render({ canvasContext: context, viewport }).promise;
+                    pages.appendChild(canvas);
+                }
+            } catch (error) {
+                const err = document.createElement('div');
+                err.className = 'pdf-loading';
+                err.style.color = '#e53e3e';
+                err.innerHTML = `Fehler beim Laden von <strong>${label}</strong>. (${error.message})`;
+                wrapper.appendChild(err);
+                console.error('PDF Ladefehler:', path, error);
+            }
+        }
+
+        // Initialer Ladezustand
+        container.innerHTML = '<div class="pdf-loading">PDFs werden geladen...</div>';
+
+        // Nacheinander rendern (vermeidet zu hohe Speichernutzung)
+        (async () => {
+            container.innerHTML = '';
+            for (const item of pdfList) {
+                await renderPdfSet(item);
+            }
+        })();
+    </script>
+</body>
+</html>
