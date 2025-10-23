@@ -549,15 +549,10 @@ body {
 .footer-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     color: #cfcfcf;
 }
 
-.footer-inner a {
-    color: #d1d1d1;
-    text-decoration: none;
-    margin-left: 12px;
-}
 
 /* Responsive Design */
 @media (max-width: 900px) {
