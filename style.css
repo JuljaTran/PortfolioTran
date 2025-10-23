@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+
 }
 
 html {
@@ -138,6 +140,17 @@ body {
     padding: 80px 0;
 }
 
+.hero-project {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 0;
+}
+
 .hero-julia {
     position: absolute;
     right: max(12px, 2%);
@@ -230,7 +243,7 @@ body {
 
 
 .hero-inner .title {
-    font-size: 10rem;
+    font-size: 8rem;
     font-weight: 900; /* bold heading */
     color: #fff;
     margin-bottom: 8px;
@@ -351,16 +364,17 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .project-card .project-image {
     width: auto;
     height: auto;
-    max-height: 160px;
+    max-height: 180px;
     max-width: 100%;
-    margin-top: auto;
     border-radius: 6px;
     object-fit: contain;
+    margin: auto;
 }
 
 .project-card:hover {
@@ -479,6 +493,51 @@ body {
     color: #fff;
 }
 
+/* Contact Section */
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0 0;
+    padding: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 10px 12px;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.contact-item:hover {
+    border-color: rgba(0,51,255,0.18);
+    box-shadow: 0 8px 24px rgba(118, 212, 255, 0.18);
+}
+
+.contact-icon {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    color: #cfe0ff;
+}
+
+.contact-item .link {
+    color: #fff;
+}
+
+.about-photo-cat {
+    width: 30%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: auto;
+}
 
 /* Footer */
 
